@@ -1,0 +1,19 @@
+= render('header')
+
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+				Description
+			%th.col-md-3
+	%tbody
+		- @programs.each do |program|
+			%tr
+				%td
+					= link_to program.name, program_path(program)
+				%td
+					= program.description
+				%td
+					= link_to "Edit", edit_program_path(program), class:'btn btn-primary col-md-6'				

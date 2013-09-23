@@ -1,0 +1,4 @@
+%tr.fields
+	= f.link_to_remove "X"
+	= f.input :support_service_id, :collection => SupportService.all.order('name')
+	= f.input :comments, label: "Comments"

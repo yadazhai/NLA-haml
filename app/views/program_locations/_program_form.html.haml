@@ -1,0 +1,8 @@
+= simple_form_for @program_location, :html => { class: "form-horizontal", role: "form"} do |f|
+	= f.hidden_field :program_id, :value => @program.id
+	= f.input :name, label: @program.name + " Location Name"
+	= f.input :streetAddress, :label => "Street Address"
+	= f.input :city, :input_html => {:value => 'Pittsburgh'}
+	= f.input :state, :input_html => {:value => 'PA'}
+	= f.input :zipCode, :label => "Zip Code"
+	= f.submit "Save", class: 'btn-large btn-primary'

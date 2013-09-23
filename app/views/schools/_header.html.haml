@@ -1,0 +1,11 @@
+%table.table.table-bordered
+	%tr
+		%td
+			%h1{:align => "left"}
+				Schools
+		%td.col-md-6
+			= link_to "Schools Home", schools_path, class:'btn btn-primary col-md-6'
+
+			= link_to "New School", new_school_path, class:'btn btn-primary col-md-6'
+		
+			= link_to "Edit Schools", modify_schools_path, class:'btn btn-primary col-md-6'

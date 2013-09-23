@@ -1,0 +1,80 @@
+= simple_nested_form_for @volunteer, :html => { class: "form-horizontal", role: "form"} do |volunteer|
+	= volunteer.hidden_field :typeOfPerson, :value => 'volunteer'
+	
+	%h3 Basic Information
+	= volunteer.input :firstName, :label => "First Name"
+	= volunteer.input :lastName, :label => "Last Name"
+	= volunteer.input :gender, :label => "Gender", :collection => [['Male', true], ['Female', false]]
+	= volunteer.input :dateOfBirth, :label => "DOB", start_year: 1930
+	= volunteer.input :race, :label => "Race", :collection => [['African American', 'black'],
+					['Asian/Pacific Islander', 'asian'],
+					['Caucasian', 'caucasian'],
+					['Hispanic', 'hispanic'],
+					['Native American', 'native american'],
+					['Other', 'other']]
+
+	%h3 Contact Information
+	= volunteer.input :email, label: "Student's Email Address"
+
+	-# ----------------------------------------------Address Nested Form---------------
+	%table
+		= volunteer.simple_fields_for :addresses do |address_form|
+			= render :partial => "people_form_partials/address_fields", :locals => {:f => address_form}
+
+	%br/
+	= volunteer.link_to_add "Add another address", :addresses
+
+	-# ----------------------------------------------Phone Numbers Nested Form---------------
+	%table
+		= volunteer.simple_fields_for :phone_numbers do |phone_number_form|
+			= render :partial => "people_form_partials/phone_number_fields", :locals => {:f => phone_number_form}
+
+	%br/
+	= volunteer.link_to_add "Add another phone number", :phone_numbers
+
+	-# ----------------------------------------------Emergency Contact Nested Form---------------
+	%table
+		= volunteer.simple_fields_for :emergency_contacts do |emergency_contact_form|
+			= render :partial => "people_form_partials/emergency_contact_fields", :locals => {:f => emergency_contact_form}
+
+	%br/
+	= volunteer.link_to_add "Add another Emergency Contact", :emergency_contacts
+
+	%h3 School Information
+	= volunteer.input :grade, label: "Current Grade in School"
+	-# ----------------------------------------------Schools Nested Form---------------
+	%table
+		= volunteer.simple_fields_for :person_schools do |schools_form|
+			= render :partial => "people_form_partials/person_school_fields", :locals => {:f => schools_form}
+
+	%br/
+	= volunteer.link_to_add "Add School", :person_schools
+
+	%h3 Medical Information
+	-# ----------------------------------------------Allergies Form---------------
+	%table
+		= volunteer.simple_fields_for :person_allergies do |allergies_form|
+			= render :partial => "people_form_partials/person_allergy_fields", :locals => {:f => allergies_form}
+
+	%br/
+	= volunteer.link_to_add "Add Allergy", :person_allergies
+
+	-# ----------------------------------------------Medications Form---------------
+	%table
+		= volunteer.simple_fields_for :person_medications do |medications_form|
+			= render :partial => "people_form_partials/person_medication_fields", :locals => {:f => medications_form}
+
+	%br/
+	= volunteer.link_to_add "Add Medication", :person_medications
+
+
+	%h3 Interests
+	%table
+		= volunteer.simple_fields_for :person_interests do |interests_form|
+			= render :partial => "people_form_partials/person_interest_fields", :locals => {:f => interests_form}
+
+	%br/
+	= volunteer.link_to_add "Add Interest", :person_interests
+
+	%br/
+	= volunteer.submit "Save", class: 'btn-large btn-primary'

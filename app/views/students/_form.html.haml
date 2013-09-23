@@ -1,0 +1,94 @@
+= simple_nested_form_for @student, :html => { class: "form-horizontal", role: "form"} do |student|
+	= student.hidden_field :typeOfPerson, :value => 'student'
+	
+	%h3 Basic Information
+	= student.input :firstName, :label => "First Name"
+	= student.input :lastName, :label => "Last Name"
+	= student.input :gender, :label => "Gender", :collection => [['Male', true], ['Female', false]]
+	= student.input :dateOfBirth, :label => "DOB", start_year: 1930
+	= student.input :race, :label => "Race", :collection => [['African American', 'black'],
+					['Asian/Pacific Islander', 'asian'],
+					['Caucasian', 'caucasian'],
+					['Hispanic', 'hispanic'],
+					['Native American', 'native american'],
+					['Other', 'other']]
+
+	%h3 Contact Information
+	= student.input :email, label: "Student's Email Address"
+
+	-# ----------------------------------------------Address Nested Form---------------
+	%table
+		= student.simple_fields_for :addresses do |address_form|
+			= render :partial => "people_form_partials/address_fields", :locals => {:f => address_form}
+
+	%br/
+	= student.link_to_add "Add another address", :addresses
+
+	-# ----------------------------------------------Phone Numbers Nested Form---------------
+	%table
+		= student.simple_fields_for :phone_numbers do |phone_number_form|
+			= render :partial => "people_form_partials/phone_number_fields", :locals => {:f => phone_number_form}
+
+	%br/
+	= student.link_to_add "Add another phone number", :phone_numbers
+
+	-# ----------------------------------------------Emergency Contact Nested Form---------------
+	%table
+		= student.simple_fields_for :emergency_contacts do |emergency_contact_form|
+			= render :partial => "people_form_partials/emergency_contact_fields", :locals => {:f => emergency_contact_form}
+
+	%br/
+	= student.link_to_add "Add another Emergency Contact", :emergency_contacts
+
+	%h3 School Information
+	= student.input :grade, label: "Current Grade in School"
+	-# ----------------------------------------------Schools Nested Form---------------
+	%table
+		= student.simple_fields_for :person_schools do |schools_form|
+			= render :partial => "people_form_partials/person_school_fields", :locals => {:f => schools_form}
+
+	%br/
+	= student.link_to_add "Add School", :person_schools
+
+	%h3 Family Information
+	= student.input :inFosterCare, label: "In Foster Care?"
+	= student.input :numberOfMembersInHousehold, label: "Number of Members in Household"
+	= student.input :schoolLunchProgram, :label => "School Lunch Program",
+		:collection => [['Free', 0],
+						['Reduced',1],
+						['Does not Qualify',2]]
+
+	%h3 Parent Information
+	= student.input :parentName, label: "Parent Name"
+	= student.input :parentPhone, label: "Parent Phone Number"
+	= student.input :parentEmail, label: "Parent Email Address"
+
+
+	%h3 Medical Information
+	-# ----------------------------------------------Allergies Form---------------
+	%table
+		= student.simple_fields_for :person_allergies do |allergies_form|
+			= render :partial => "people_form_partials/person_allergy_fields", :locals => {:f => allergies_form}
+
+	%br/
+	= student.link_to_add "Add Allergy", :person_allergies
+
+	-# ----------------------------------------------Medications Form---------------
+	%table
+		= student.simple_fields_for :person_medications do |medications_form|
+			= render :partial => "people_form_partials/person_medication_fields", :locals => {:f => medications_form}
+
+	%br/
+	= student.link_to_add "Add Medication", :person_medications
+
+	-# ----------------------------------------------Support Services Form---------------
+	%table
+		= student.simple_fields_for :person_support_services do |support_services_form|
+			= render :partial => "people_form_partials/person_support_service_fields", :locals => {:f => support_services_form}
+
+	%br/
+	= student.link_to_add "Add Support Service", :person_support_services
+
+
+	%br/
+	= student.submit "Save", class: 'btn-large btn-primary'

@@ -1,0 +1,3 @@
+%tr.fields
+	= f.link_to_remove "X"
+	= f.input :interest_id, :collection => Interest.all.order('name')

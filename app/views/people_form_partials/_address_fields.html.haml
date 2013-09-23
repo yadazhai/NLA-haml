@@ -1,0 +1,7 @@
+%tr.fields
+	= f.link_to_remove "X"
+	= f.input :streetAddress, :label => "Street Address"
+	= f.input :city, :input_html => {:value => 'Pittsburgh'}
+	= f.input :state, :input_html => {:value => 'PA'}
+	= f.input :zipCode, :label => "Zip Code"
+	= f.input :isCurrent, :label => "Current Address?", :input_html => {:checked => true }

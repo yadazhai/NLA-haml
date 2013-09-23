@@ -1,0 +1,57 @@
+= simple_nested_form_for @employee :html => { class: "form-horizontal", role: "form"} do |employee|
+	= employee.hidden_field :typeOfPerson, :value => 'employee'
+	
+	%h3 Basic Information
+	= employee.input :firstName, :label => "First Name"
+	= employee.input :lastName, :label => "Last Name"
+	= employee.input :gender, :label => "Gender", :collection => [['Male', true], ['Female', false]]
+	= employee.input :dateOfBirth, :label => "DOB", start_year: 1930
+
+
+	%h3 Contact Information
+	= employee.input :email, label: "Email Address"
+
+	-# ----------------------------------------------Address Nested Form---------------
+	%table
+		= employee.simple_fields_for :addresses do |address_form|
+			= render :partial => "people_form_partials/address_fields", :locals => {:f => address_form}
+
+	%br/
+	= employee.link_to_add "Add another address", :addresses
+
+	-# ----------------------------------------------Phone Numbers Nested Form---------------
+	%table
+		= employee.simple_fields_for :phone_numbers do |phone_number_form|
+			= render :partial => "people_form_partials/phone_number_fields", :locals => {:f => phone_number_form}
+
+	%br/
+	= employee.link_to_add "Add another phone number", :phone_numbers
+
+	-# ----------------------------------------------Emergency Contact Nested Form---------------
+	%table
+		= employee.simple_fields_for :emergency_contacts do |emergency_contact_form|
+			= render :partial => "people_form_partials/emergency_contact_fields", :locals => {:f => emergency_contact_form}
+
+	%br/
+	= employee.link_to_add "Add another Emergency Contact", :emergency_contacts
+
+
+	%h3 Medical Information
+	-# ----------------------------------------------Allergies Form---------------
+	%table
+		= employee.simple_fields_for :person_allergies do |allergies_form|
+			= render :partial => "people_form_partials/person_allergy_fields", :locals => {:f => allergies_form}
+
+	%br/
+	= employee.link_to_add "Add Allergy", :person_allergies
+
+	-# ----------------------------------------------Medications Form---------------
+	%table
+		= employee.simple_fields_for :person_medications do |medications_form|
+			= render :partial => "people_form_partials/person_medication_fields", :locals => {:f => medications_form}
+
+	%br/
+	= employee.link_to_add "Add Medication", :person_medications
+
+	%br/
+	= employee.submit "Save", class: 'btn-large btn-primary'

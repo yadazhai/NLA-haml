@@ -1,0 +1,6 @@
+All variables are camelCase
+
+No abreviations are used. ex. dateOfBirth
+
+Gender: 1 = male, 0 = female
+

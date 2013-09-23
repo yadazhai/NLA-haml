@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  firstName: MyString
+  lastName: MyString
+  gender: false
+  dateOfBirth: 2013-09-22
+  race: MyString
+  email: MyString
+  parent_id: 1
+  numberOfMembersInHousehold: 1
+  inFosterCare: false
+  schoolLunchProgram: 1
+  clinicName: MyString
+  clinicStreetAddress: MyString
+  clinicCity: MyString
+  clinicState: MyString
+  clinicZipCode: MyString
+  clinicPhoneNumber: MyString
+  typeOfPerson: MyString
+  isActive: false
+  grade: 1
+  otherFoodNeeds: MyString
+  physicalImpairments: MyString
+  comments: MyString
+  tag: MyString
+  parentName: MyString
+  parentPhone: MyString
+  CAPAS: MyString
+
+two:
+  firstName: MyString
+  lastName: MyString
+  gender: false
+  dateOfBirth: 2013-09-22
+  race: MyString
+  email: MyString
+  parent_id: 1
+  numberOfMembersInHousehold: 1
+  inFosterCare: false
+  schoolLunchProgram: 1
+  clinicName: MyString
+  clinicStreetAddress: MyString
+  clinicCity: MyString
+  clinicState: MyString
+  clinicZipCode: MyString
+  clinicPhoneNumber: MyString
+  typeOfPerson: MyString
+  isActive: false
+  grade: 1
+  otherFoodNeeds: MyString
+  physicalImpairments: MyString
+  comments: MyString
+  tag: MyString
+  parentName: MyString
+  parentPhone: MyString
+  CAPAS: MyString

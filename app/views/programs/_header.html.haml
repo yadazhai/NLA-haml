@@ -1,0 +1,11 @@
+%table.table.table-bordered
+	%tr
+		%td
+			%h1{:align => "left"}
+				Programs
+		%td.col-md-6
+			= link_to "Programs Home", programs_path, class:'btn btn-primary col-md-6'
+
+			= link_to "New Program", new_program_path, class:'btn btn-primary col-md-6'
+		
+			= link_to "Edit Programs", modify_programs_path, class:'btn btn-primary col-md-6'

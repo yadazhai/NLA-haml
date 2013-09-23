@@ -1,0 +1,29 @@
+%table.table.table-bordered
+	%tr
+		%td
+			%h1{:align => "left"}
+				= @program.name
+		%td.col-md-6
+			= link_to @program.name + " Home", program_path(@program), class:'btn btn-primary col-md-6'
+			= link_to "New Program Location", new_program_location_path(:program_name => @program.name), class:'btn btn-primary col-md-6'
+		
+			= link_to "Enroll Student", modify_programs_path, class:'btn btn-primary col-md-6'
+
+%h3 Locations
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+				Address
+			%th.col-md-3				
+	%tbody
+		- @program_locations.each do |program_location|
+			%tr
+				%td
+					= program_location.name
+				%td
+					= program_location.streetAddress
+				%td
+					= link_to "Edit", edit_program_location_path(program_location), class:'btn btn-primary col-md-6'	

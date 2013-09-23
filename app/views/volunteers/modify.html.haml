@@ -1,0 +1,24 @@
+= render('header')
+
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				First Name
+			%th.col-md-3
+				Last Name
+			%th.col-md-3
+				Email Address
+			%th.col-md-6
+	%tbody
+		- @volunteers.each do |volunteer|
+			%tr
+				%td
+					= volunteer.firstName
+				%td
+					= volunteer.lastName
+				%td 
+					= volunteer.email
+				%td
+					= link_to "Edit", edit_volunteer_path(volunteer), class:'btn btn-primary col-md-4'
+					= link_to "Delete", person_path(volunteer), :method => :delete, class:'btn btn-danger col-md-4'

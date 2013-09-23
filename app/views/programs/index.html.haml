@@ -1,0 +1,16 @@
+= render('header')
+
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+				Description
+	%tbody
+		- @programs.each do |program|
+			%tr
+				%td
+					= link_to program.name, program_path(program)
+				%td
+					= program.description

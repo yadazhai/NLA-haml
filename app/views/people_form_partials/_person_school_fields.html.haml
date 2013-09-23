@@ -1,0 +1,4 @@
+%tr.fields
+	= f.link_to_remove "X"
+	= f.input :school_id, :collection => School.all.order('name')
+	= f.input :isCurrent, label: "Is Current School?", :input_html => {:checked => true}

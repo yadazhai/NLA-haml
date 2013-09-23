@@ -1,0 +1,16 @@
+= render('header')
+
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				First Name
+			%th.col-md-3
+				Last Name
+	%tbody
+		- @employees.each do |employee|
+			%tr
+				%td
+					= employee.firstName
+				%td
+					= employee.lastName

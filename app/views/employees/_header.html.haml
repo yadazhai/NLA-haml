@@ -1,0 +1,11 @@
+%table.table.table-bordered
+	%tr
+		%td
+			%h1{:align => "left"}
+				Employees
+		%td.col-md-6
+			= link_to "Employees Home", employees_path, class:'btn btn-primary col-md-6'
+
+			= link_to "New Employee", new_employee_path, class:'btn btn-primary col-md-6'
+		
+			= link_to "Edit Employees", modify_employees_path, class:'btn btn-primary col-md-6'

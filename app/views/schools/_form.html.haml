@@ -1,0 +1,6 @@
+= simple_form_for @school, :html => { class: "form-horizontal", role: "form"} do |f|
+	= f.input :name, label: "School Name"
+	= f.input :address, label: "School Address"
+	= f.input :cohort, label: "Cohort"
+
+	= f.submit "Save", class: 'btn-large btn-primary'

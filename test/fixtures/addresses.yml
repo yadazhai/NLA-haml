@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: 
+  streetAddress: MyString
+  city: MyString
+  state: MyString
+  zipCode: 1
+  isCurrent: false
+
+two:
+  person_id: 
+  streetAddress: MyString
+  city: MyString
+  state: MyString
+  zipCode: 1
+  isCurrent: false

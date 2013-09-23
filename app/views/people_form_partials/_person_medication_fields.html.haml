@@ -1,0 +1,4 @@
+%tr.fields
+	= f.link_to_remove "X"
+	= f.input :medication_id, :collection => Medication.all.order('name')
+	= f.input :comments, label: "Comments"
