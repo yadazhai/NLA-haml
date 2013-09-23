@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923005520) do
+ActiveRecord::Schema.define(version: 20130923131157) do
 
   create_table "addresses", force: true do |t|
     t.integer  "person_id"
@@ -163,7 +163,8 @@ ActiveRecord::Schema.define(version: 20130923005520) do
   add_index "phone_numbers", ["person_id"], name: "index_phone_numbers_on_person_id", using: :btree
 
   create_table "program_attendances", force: true do |t|
-    t.integer  "program_enrollment_id"
+    t.integer  "program_location_id"
+    t.integer  "person_id"
     t.date     "date"
     t.string   "status"
     t.string   "comments"
@@ -171,7 +172,8 @@ ActiveRecord::Schema.define(version: 20130923005520) do
     t.datetime "updated_at"
   end
 
-  add_index "program_attendances", ["program_enrollment_id"], name: "index_program_attendances_on_program_enrollment_id", using: :btree
+  add_index "program_attendances", ["person_id"], name: "index_program_attendances_on_person_id", using: :btree
+  add_index "program_attendances", ["program_location_id"], name: "index_program_attendances_on_program_location_id", using: :btree
 
   create_table "program_enrollments", force: true do |t|
     t.integer  "program_location_id"

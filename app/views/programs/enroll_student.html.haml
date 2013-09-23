@@ -1,0 +1,4 @@
+= simple_form_for @program_enrollment, :html => { class: "form-horizontal", role: "form"} do |f|
+	= f.input :person_id, label: "Select Student Name", :collection => @students
+	= f.input :program_location_id, label: "Enroll here", :collection => @program_locations
+	= f.submit "Save", class: 'btn-large btn-primary'

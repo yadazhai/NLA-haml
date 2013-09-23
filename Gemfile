@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Spreadsheet processing
+gem 'roo'
+
 gem 'simple_form', '3.0.0'
 gem 'nested_form'
 

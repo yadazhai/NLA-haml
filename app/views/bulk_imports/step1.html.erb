@@ -1,0 +1,164 @@
+<h1>Student Bulk Import</h1>
+
+<p>A CSV or Excel file can be used to import records. The first row should be the column name</p>
+
+<!-- Button to trigger modal -->
+<a data-toggle="modal" href="#fields" class="btn btn-primary btn-lg">Show Allowed Column Names</a>
+
+<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
+
+<%= form_for @bulk_import, :url => step2_bulk_import_path do |f| %>
+  <% if @bulk_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bulk_import.errors.count, "error") %> prohibited this import from completing:</h2>
+      <ul>
+      <% @bulk_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Import" %></div>
+<% end %>
+ 
+<div class="modal fade" id="fields" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Allowed Columns</h4>
+      </div>
+      <div class="modal-body">
+<table class ="table table-striped">
+  <thead>
+    <tr>
+      <th> Column Name </th>
+      <th> Description </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> first_name </td>
+      <td> .</td>
+    </tr>
+    <tr>
+      <td> last_name </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> gender </td>
+      <td> either "male" or "female" </td>
+    </tr>
+    <tr>
+      <td> DOB </td>
+      <td> Date of Birth: yyyy-mm-dd format </td>
+    </tr>
+    <tr>
+      <td> race </td>
+      <td> one of: 'african american', 'asian', 'caucasian', 'hispanic', 'native american', 'other' </td>
+    </tr>
+    <tr>
+      <td> email </td>
+      <td> ex: something@example.com </td>
+    </tr>
+    <tr>
+      <td> parent_name </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> parent_phone </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> household_number_of_members </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> in_foster_care </td>
+      <td> true or false </td>
+    </tr>
+    <tr>
+      <td> school_lunch_program </td>
+      <td> one of 'free', 'reduced', 'does not qualify' </td>
+    </tr>
+    <tr>
+      <td> clinic_name </td>
+      <td> For Emergency Contact </td>
+    </tr>
+    <tr>
+      <td> clinic_street_address </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> clinic_city </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> clinic_state </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> clinic_zip_code </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> clinic_phone_number </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> grade </td>
+      <td> Current grade in school </td>
+    </tr>
+    <tr>
+      <td> school_name </td>
+      <td> Name of current school. Must be in the list of schools </td>
+    </tr>
+    <tr>
+      <td> street_address </td>
+      <td> Current Street Address </td>
+    </tr>
+    <tr>
+      <td> city </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> state </td>
+      <td> ex. PA </td>
+    </tr>
+    <tr>
+      <td> zip_code </td>
+      <td> . </td>
+    </tr>
+    <tr>
+      <td> phone </td>
+      <td> Student's phone number </td>
+    </tr>
+    <tr>
+      <td> afterschool_program_location </td>
+      <td> Location where the student will be attending the afterschool program - must already be in the list of locations. This will enroll the student in the program. Leave this field blank if you do not wish to enroll the student in the program. </td>
+    </tr>
+    <tr>
+      <td> allergy1, allergy2 </td>
+      <td> Must be in the existing list of Allergies </td>
+    </tr>
+    <tr>
+      <td> medication1, medication2 </td>
+      <td> Must be in the existing list of Medications </td>
+    </tr>
+    <tr>
+      <td> support_service1, support_service2 </td>
+      <td> Must be in the existing list of Support Services </td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

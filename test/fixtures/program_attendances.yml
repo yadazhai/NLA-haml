@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  program_enrollment_id: 
-  date: 2013-09-22
+  program_location_id: 
+  person_id: 
+  date: 2013-09-23
   status: MyString
   comments: MyString
 
 two:
-  program_enrollment_id: 
-  date: 2013-09-22
+  program_location_id: 
+  person_id: 
+  date: 2013-09-23
   status: MyString
   comments: MyString

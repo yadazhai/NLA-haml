@@ -11,6 +11,13 @@ NLADb::Application.routes.draw do
     end
   end
   
+  resource :bulk_import, :only => [:index] do 
+    collection do
+      get 'step1'
+      post 'step2'
+    end
+  end
+  
   resources :interests, only:[:new, :create, :edit, :update]
   resources :allergies, only:[:new, :create, :edit, :update]
   resources :medications, only:[:new, :create, :edit, :update]
@@ -36,8 +43,13 @@ NLADb::Application.routes.draw do
   end
 
 
-  resources :program_locations, except:[:index, :show, :destroy]
-  resources :program_enrollments, only:[:create, :update]
+  resources :program_locations, except:[:index, :destroy] do
+    member do
+      get 'attendance'
+    end
+  end
+
+  resources :program_enrollments, only:[:create, :update, :destroy]
   resources :programs do
     collection do
       get 'modify'
@@ -46,7 +58,7 @@ NLADb::Application.routes.draw do
     member do
       get 'modify_locations'
       get 'new_location'
-      get 'list_students'
+      get 'enroll_student'
     end
   end
 

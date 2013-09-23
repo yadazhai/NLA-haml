@@ -43,9 +43,10 @@ class Person < ActiveRecord::Base
 	accepts_nested_attributes_for :phone_numbers, allow_destroy: :true
 
 	has_many :program_enrollments
+	has_many :program_attendances
 #------------------- Functions that return Person information -------- #
 	# Ex. "Smith, John"
-	def fullName
+	def name
 		"#{lastName}, #{firstName}"
 	end
 

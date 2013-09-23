@@ -7,7 +7,7 @@
 			= link_to @program.name + " Home", program_path(@program), class:'btn btn-primary col-md-6'
 			= link_to "New Program Location", new_program_location_path(:program_name => @program.name), class:'btn btn-primary col-md-6'
 		
-			= link_to "Enroll Student", modify_programs_path, class:'btn btn-primary col-md-6'
+			= link_to "Enroll Student", enroll_student_program_path, class:'btn btn-primary col-md-6'
 
 %h3 Locations
 %table.table.table-striped.table-bordered
@@ -22,7 +22,7 @@
 		- @program_locations.each do |program_location|
 			%tr
 				%td
-					= program_location.name
+					= link_to program_location.name, program_location_path(program_location)
 				%td
 					= program_location.streetAddress
 				%td

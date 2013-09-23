@@ -1,0 +1,19 @@
+%h1{align: 'center'}
+	= "Attendance"
+
+%h4 Please refresh this page once before using.
+
+
+= simple_form_for @program_location, :html => { class: "form", role: "form"} do |f|
+	= f.hidden_field :id, :value => @program_location.id
+	%table
+		- @program_attendances.each do |p_attendance|
+			= simple_fields_for "program_attendances[]", p_attendance do |att_fields|
+				%tr
+					%td.col-md-4
+						= p_attendance.person.name
+					%td.col-md-4
+						= att_fields.input :status, label: "", :collection => ['Present', 'Absent', 'Excused'], default: 'Present'
+					%td.col-md-4
+						= att_fields.input :comments, label: " "
+	= f.submit "Save", class: 'btn-large btn-primary'

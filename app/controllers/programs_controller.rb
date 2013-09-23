@@ -40,6 +40,12 @@ class ProgramsController < ApplicationController
 		end
 	end
 
+	def enroll_student
+		@program = Program.find(params[:id])
+		@students = Person.where(typeOfPerson: "student")
+		@program_enrollment = ProgramEnrollment.new
+		@program_locations = ProgramLocation.where(program_id: @program.id)
+	end
 	private
 	def set_program
 		@program = Program.find(params[:id])
