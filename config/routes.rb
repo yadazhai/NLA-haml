@@ -5,7 +5,16 @@ NLADb::Application.routes.draw do
       get 'modify'
     end
   end
-  resources :people
+  resources :people do
+    collection do
+      get 'change_fields'
+    end
+  end
+  
+  resources :interests, only:[:new, :create, :edit, :update]
+  resources :allergies, only:[:new, :create, :edit, :update]
+  resources :medications, only:[:new, :create, :edit, :update]
+  resources :support_services, only:[:new, :create, :edit, :update]
 
   resources :schools, except: [:destroy] do
     collection do
@@ -28,7 +37,7 @@ NLADb::Application.routes.draw do
 
 
   resources :program_locations, except:[:index, :show, :destroy]
-    
+  resources :program_enrollments, only:[:create, :update]
   resources :programs do
     collection do
       get 'modify'
@@ -37,6 +46,7 @@ NLADb::Application.routes.draw do
     member do
       get 'modify_locations'
       get 'new_location'
+      get 'list_students'
     end
   end
 

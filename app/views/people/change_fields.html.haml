@@ -1,0 +1,74 @@
+%table.table.table-bordered
+	%tr
+		%td
+			%h1{:align => "left"}
+				Person Fields
+		%td.col-md-6
+			= link_to "New Allergy", new_allergy_path, class:'btn btn-primary col-md-6'
+		
+			= link_to "New Medication", new_medication_path, class:'btn btn-primary col-md-6'
+
+			= link_to "New Support Service", new_support_service_path, class:'btn btn-primary col-md-6'
+
+			= link_to "New Interest", new_interest_path, class:'btn btn-primary col-md-6'
+
+%h3 Allergies
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+	%tbody
+		- @allergies.each do |allergy|
+			%tr
+				%td
+					= allergy.name
+				%td
+					= link_to "Edit", edit_allergy_path(allergy), class:'btn btn-primary col-md-6'				
+
+%h3 Medications
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+	%tbody
+		- @medications.each do |medication|
+			%tr
+				%td
+					= medication.name
+				%td
+					= link_to "Edit", edit_medication_path(medication), class:'btn btn-primary col-md-6'				
+
+%h3 Support Services
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+	%tbody
+		- @support_services.each do |support_service|
+			%tr
+				%td
+					= support_service.name
+				%td
+					= link_to "Edit", edit_support_service_path(support_service), class:'btn btn-primary col-md-6'				
+
+
+%h3 Interests
+%table.table.table-striped.table-bordered
+	%thead
+		%tr
+			%th.col-md-3
+				Name
+			%th.col-md-3
+	%tbody
+		- @interests.each do |interest|
+			%tr
+				%td
+					= interest.name
+				%td
+					= link_to "Edit", edit_interest_path(interest), class:'btn btn-primary col-md-6'				

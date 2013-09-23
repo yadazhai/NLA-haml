@@ -48,6 +48,13 @@ class PeopleController < ApplicationController
 		redirect_to_home(@person.typeOfPerson)
 	end
 
+	def change_fields
+		@allergies = Allergy.all
+		@medications = Medication.all
+		@support_services = SupportService.all
+		@interests = Interest.all
+	end
+
 	private
 
 	def person_params
